@@ -19,10 +19,6 @@ var serverApi = {
     return $.get(serverApi.config.urlBase + 'house.json');
   },
 
-  getPlanSvg: function() {
-    return $.get(serverApi.config.urlBase + 'plan.svg');
-  },
-
   changeRoomProperty(roomName, roomProperty, value) {
     //Simulate async call
     serverApi.data[roomName][roomProperty] = value;

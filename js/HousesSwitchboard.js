@@ -20,4 +20,8 @@ var HouseSwitchboard = {
   }
 };
 
-$(serverApi.init().done(HouseSwitchboard.setup));
+serverApi.init().done(function() {
+  $(function() {
+    $('object').on('load', HouseSwitchboard.setup);
+  });
+});
