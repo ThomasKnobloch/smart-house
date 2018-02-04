@@ -1,0 +1,27 @@
+{
+    "livingroom": {
+        "light": true,
+        "curtains": true,
+        "temperature": 22
+    },
+    "bedroom1": {
+        "light": true,
+        "curtains": false,
+        "temperature": 21
+    },
+    "bedroom2": {
+        "light": false,
+        "curtains": true,
+        "temperature": 20
+    },
+    "kitchen": {
+        "light": false,
+        "curtains": true,
+        "temperature": 18
+    },
+    "bathrom": {
+        "light": false,
+        "curtains": false,
+        "temperature": 23
+    }
+}

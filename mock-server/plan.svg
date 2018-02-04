@@ -1,0 +1,58 @@
+<svg height="400" version="1.1" width="400" xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="bedroom1" transform="translate(10,40)">
+    <path d="M30 0 L0 0 L0 220 L130 220 L130 0 L100 0" stroke-width="5" stroke="black" fill="red"/>
+    <path class="curtains" d="M30 0 L100 0" stroke-width="5" stroke="grey"/>
+    <image class="light" x="90" y="180" width="32" height="32" xlink:href="img/light-bulb-on.png"/>
+    <text class="temperature" fill="black" font-size="14" x="10" y="210">
+      20°
+    </text>
+    <text fill="black" font-size="14" x="35" y="83">
+      Bedroom 1
+    </text>
+  </g>
+  <g id="livingroom" transform="translate(140,40)">
+    <path d="M250 30 L250 0 L0 0 L0 220 L250 220 L250 190" stroke-width="5" stroke="black" fill="green"/>
+    <path class="curtains" d="M250 30 L250 190" stroke-width="5" stroke="grey"/>
+    <image class="light" x="210" y="180" width="32" height="32" xlink:href="img/light-bulb-on.png"/>
+    <text class="temperature" fill="black" font-size="14" x="10" y="210">
+      20°
+    </text>
+    <text font-size="14" x="94" y="166" fill="black">
+      Livingroom
+    </text>
+  </g>
+  <g id="bedroom2" transform="translate(140,10)">
+    <path d="M30 0 L0 0 L0 160 L130 160 L130 0 L100 0" stroke-width="5" stroke="black" fill="orange"/>
+    <path class="curtains" d="M30 0 L100 0" stroke-width="5" stroke="grey"/>
+    <image class="light" x="90" y="120" width="32" height="32" xlink:href="img/light-bulb-on.png"/>
+    <text class="temperature" fill="black" font-size="14" x="10" y="150">
+      20°
+    </text>
+    <text font-size="14" x="33" y="74" fill="black">
+      Bedroom 2
+    </text>
+  </g>
+  <g id="bathroom" transform="translate(10,260)">
+    <path d="M30 130 L0 130 L0 0 L170 0 L170 130 L140 130" stroke-width="5" stroke="black" fill="blue"/>
+    <path class="curtains" d="M30 130 L140 130" stroke-width="5" stroke="grey"/>
+    <image class="light" x="130" y="90" width="32" height="32" xlink:href="img/light-bulb-on.png"/>
+    <text class="temperature" fill="black" font-size="14" x="10" y="120">
+      20°
+    </text>
+    <text font-size="14" x="57" y="56" fill="black">
+      Bathroom
+    </text>
+  </g>
+  <g id="kitchen" transform="translate(180,260)">
+    <path d="M30 130 L0 130 L0 0 L210 0 L210 130 L180 130" stroke-width="5" stroke="black" fill="skyblue"/>
+    <path class="curtains" d="M30 130 L180 130" stroke-width="5" stroke="grey"/>
+    <image class="light" x="170" y="90" width="32" height="32" xlink:href="img/light-bulb-on.png"/>
+    <text class="temperature" fill="black" font-size="14" x="10" y="120">
+      20°
+    </text>
+    <text font-size="14" x="80" y="61" fill="black">
+      Kitchen
+    </text>
+  </g>
+</svg>
