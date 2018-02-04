@@ -7,27 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Automatic House</title>
 
-  <link rel="stylesheet" href="css/knacss.css" media="all">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <link rel="stylesheet" href="css/styles.css" media="all">
 </head>
 
 <body>
-
-  <header id="header" role="banner" class="pas">
-    Automatic House
-  </header>
-  <div class="flex-container">
-    <aside class="mod w30 aside">
-      <nav id="navigation" role="navigation">
-        <ul id="switchboard" class="pas">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Automatic House</span>
+      <nav class="mdl-navigation">
+        <ul id="switchboard" class="switchboard-list mdl-list">
         </ul>
       </nav>
-    </aside>
-    <main id="main" role="main" class="flex-item-fluid pas">
-      <object type="image/svg+xml" data="img/plan.svg">Your browser does not support SVG</object>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <object type="image/svg+xml" data="img/plan.svg">Your browser does not support SVG</object>
+      </div>
     </main>
   </div>
 
+  <!-- Material Design Lite library -->
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <!-- JQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -47,8 +49,8 @@
   <script src="js/RoomView.js"></script>
   <script src="js/PlanView.js"></script>
 
-  <!-- Views -->
-  <script src="js/HousesSwitchboard.js"></script>
+  <!-- Main Script -->
+  <script src="js/App.js"></script>
 </body>
 
 </html>

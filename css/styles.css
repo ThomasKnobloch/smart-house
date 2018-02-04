@@ -1,17 +1,13 @@
 /* Votre Style */
 
-ul {
-  background: #bbb;
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: #46b6ac;
+  text-transform: capitalize;
 }
-li, [class*="grid"] > * {
-  background: #ccc;
+
+.page-content {
+  display: flex;
+  justify-content: center;
 }
-header, footer {
-  background: #ddd;
-}
-main {
-  background: #eee;
-}
-aside {
-  background: #aaa;
-}
+

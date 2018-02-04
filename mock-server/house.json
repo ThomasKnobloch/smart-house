@@ -19,7 +19,7 @@
         "curtains": true,
         "temperature": 18
     },
-    "bathrom": {
+    "bathroom": {
         "light": false,
         "curtains": false,
         "temperature": 23

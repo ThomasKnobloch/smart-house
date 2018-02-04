@@ -19,29 +19,55 @@ RoomView.prototype = {
     var curtainsId = room.name + '-curtains';
     var temperatureId = room.name + '-temperature';
 
-    var html = '<li class="pas inbl"><form><fieldset>';
-    html += '<legend>' + room.name + ':</legend>';
+    var html =
+      `
+        <li class="mdl-list__item">
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">` +
+      room.name +
+      `</h2>
+                </div>
+            <div class="mdl-card__supporting-text">
+    `;
 
     html +=
-      '<div class="flex-container"><label for="' +
+      `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
       lightId +
-      '" class="label flex-item-fluid"> Light </label>';
-    html += '<input id="' + lightId + '" type="checkbox" class="switch"></div>';
+      `">
+        <input type="checkbox" id="` +
+      lightId +
+      `" class="mdl-switch__input">
+        <span class="mdl-switch__label">Light</span>
+      </label>`;
 
     html +=
-      '<div class="flex-container"><label for="' +
+      `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
       curtainsId +
-      '" class="label flex-item-fluid"> Curtains </label>';
-    html +=
-      '<input id="' + curtainsId + '" type="checkbox" class="switch"></div>';
+      `">
+        <input type="checkbox" id="` +
+      curtainsId +
+      `" class="mdl-switch__input">
+        <span class="mdl-switch__label">Curtains</span>
+      </label>`;
 
     html +=
-      '<div class="flex-container"><label for="' +
+      `
+    <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="` +
       temperatureId +
-      '" class="label flex-item-fluid"> Temperature </label>';
+      `">
+            <label class="mdl-textfield__label" for="` +
+      temperatureId +
+      `">Temperature...</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+    </form>`;
 
-    html += '<input id="' + temperatureId + '" type="number"></div>';
-    html += '</fieldset></form></li>';
+    html += `
+        </div>
+    </div>`;
 
     this.$container = $('#switchboard');
     this.$container.append(html);
