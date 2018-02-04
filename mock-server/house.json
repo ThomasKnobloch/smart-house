@@ -1,9 +1,4 @@
 {
-    "livingroom": {
-        "light": true,
-        "curtains": true,
-        "temperature": 22
-    },
     "bedroom1": {
         "light": true,
         "curtains": false,
@@ -14,14 +9,19 @@
         "curtains": true,
         "temperature": 20
     },
-    "kitchen": {
-        "light": false,
+    "livingroom": {
+        "light": true,
         "curtains": true,
-        "temperature": 18
+        "temperature": 22
     },
     "bathroom": {
         "light": false,
         "curtains": false,
         "temperature": 23
+    },
+    "kitchen": {
+        "light": false,
+        "curtains": true,
+        "temperature": 18
     }
 }

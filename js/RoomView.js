@@ -22,7 +22,9 @@ RoomView.prototype = {
     var html =
       `
         <li class="mdl-list__item">
-            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+            <div class="room-view ` +
+      room.name +
+      `-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">` +
       room.name +

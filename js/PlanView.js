@@ -43,7 +43,11 @@ PlanView.prototype = {
     var $curtainsPath = this.$container.find(
       'g#' + roomModel.name + ' .curtains'
     );
+    var $curtainsRect = this.$container.find(
+      'g#' + roomModel.name + ' .window-light'
+    );
     roomModel.isCurtainsOpened ? $curtainsPath.hide() : $curtainsPath.show();
+    roomModel.isCurtainsOpened ? $curtainsRect.show() : $curtainsRect.hide();
   },
 
   updateTemperature: function(roomModel) {

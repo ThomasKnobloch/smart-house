@@ -1,13 +1,27 @@
 /* Votre Style */
 
-.demo-card-square > .mdl-card__title {
+.room-view > .mdl-card__title {
   color: #fff;
-  background: #46b6ac;
   text-transform: capitalize;
+}
+
+.bedroom1-card > .mdl-card__title {
+  background: #E91E63;
+}
+.livingroom-card > .mdl-card__title {
+  background: #8BC34A;
+}
+.bedroom2-card > .mdl-card__title {
+  background: #FF9800;
+}
+.bathroom-card > .mdl-card__title {
+  background: #03A9F4;
+}
+.kitchen-card > .mdl-card__title {
+  background: #00BCD4;
 }
 
 .page-content {
   display: flex;
   justify-content: center;
 }
-
