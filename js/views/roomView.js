@@ -32,53 +32,44 @@ RoomView.prototype = {
     this.temperatureId = this.model.name + '-temperature';
 
     // Room header element
-    var html =
-      `
-        <li class="mdl-list__item">
-            <div class="room-view ` +
-      this.model.name +
-      `-card mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">` +
-      this.model.name +
-      `</h2>
-                </div>
-            <div class="mdl-card__supporting-text">
+    var html = `
+    <li class="mdl-list__item">
+        <div class="room-view ${this.model.name}-card mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title mdl-card--expand">
+                <h2 class="mdl-card__title-text">${this.model.name}</h2>
+            </div>
+        <div class="mdl-card__supporting-text">
     `;
 
     // Room light switch element
-    html +=
-      `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
-      this.lightId +
-      `">
-        <input type="checkbox" id="` +
-      this.lightId +
-      `" class="mdl-switch__input">
+    html += `
+    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
+      this.lightId
+    }">
+        <input type="checkbox" id="${this.lightId}" class="mdl-switch__input">
         <span class="mdl-switch__label">Light</span>
       </label>`;
 
     // Room curtains switch element
-    html +=
-      `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
-      this.curtainsId +
-      `">
-        <input type="checkbox" id="` +
-      this.curtainsId +
-      `" class="mdl-switch__input">
+    html += `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
+      this.curtainsId
+    }">
+        <input type="checkbox" id="${
+          this.curtainsId
+        }" class="mdl-switch__input">
         <span class="mdl-switch__label">Curtains</span>
       </label>`;
 
     // Room temerature input element
-    html +=
-      `
+    html += `
     <form action="#">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="` +
-      this.temperatureId +
-      `">
-            <label class="mdl-textfield__label" for="` +
-      this.temperatureId +
-      `">Temperature...</label>
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="${
+              this.temperatureId
+            }">
+            <label class="mdl-textfield__label" for="${
+              this.temperatureId
+            }">Temperature...</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
     </form>`;
