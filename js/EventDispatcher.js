@@ -1,3 +1,7 @@
+/**
+ * Simple implementation of a Event dispatcher
+ */
+
 var Event = function(sender) {
   this._sender = sender;
   this._listeners = [];

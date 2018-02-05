@@ -11,9 +11,7 @@ RoomController.prototype = {
   },
 
   setupHandlers: function() {
-    /**
-     * Event Dispatcher
-     */
+    // Listen to view's events
     this.view.lightEvent.attach(this.switchLight.bind(this));
     this.view.curtainsEvent.attach(this.moveCurtains.bind(this));
     this.view.temperatureEvent.attach(this.changeTemperature.bind(this));
@@ -21,7 +19,8 @@ RoomController.prototype = {
     return this;
   },
 
-  /* -------------------- Handlers From Event Dispatcher ----------------- */
+  /* -------------------- Event Dispatcher Listeners ----------------- */
+
   switchLight: function(sender, args) {
     this.model.switchLight(args);
   },

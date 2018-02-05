@@ -7,8 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Automatic House</title>
 
+  <!-- Material Design Lite icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!-- Material Design Lite style sheet -->
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-blue.min.css" />
+  <!-- Custom style sheet -->
   <link rel="stylesheet" href="css/styles.css" media="all">
 </head>
 
@@ -23,33 +26,29 @@
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
-        <object type="image/svg+xml" data="img/plan.svg">Your browser does not support SVG</object>
+        <object type="image/svg+xml" data="img/plan.svg">
+          Your browser does not support SVG
+        </object>
       </div>
     </main>
   </div>
 
-  <!-- Material Design Lite library -->
+  <!-- Material Design Lite script -->
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <!-- JQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-  <!-- Fake server connection -->
+  <!-- 
+    Application's scripts:
+    I let the scripts split in different files for readability reasons.
+    Normally I would use a module bundled such as Webpack, but that would imply a development and production environment that I find to heavy for that kind of assignment.
+  -->
   <script src="js/ServerApi.js"></script>
-
-  <!-- Utils -->
   <script src="js/EventDispatcher.js"></script>
-
-  <!-- Model -->
   <script src="js/RoomModel.js"></script>
-
-  <!-- Controller -->
   <script src="js/RoomController.js"></script>
-
-  <!-- Views -->
   <script src="js/RoomView.js"></script>
   <script src="js/PlanView.js"></script>
-
-  <!-- Main Script -->
   <script src="js/App.js"></script>
 </body>
 

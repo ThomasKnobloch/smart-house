@@ -1,5 +1,7 @@
 var RoomModel = function(name) {
   this.name = name;
+
+  // Default values
   this.isLightOn = false;
   this.isCurtainsOpened = false;
   this.temperature = 0;
@@ -10,7 +12,8 @@ var RoomModel = function(name) {
 };
 
 RoomModel.prototype = {
-  // GETTERS
+  /* -------------------- Getters ----------------- */
+
   getLightState: function() {
     serverApi.getRoomLightState(this.name).done(this.onLightChange.bind(this));
   },
@@ -27,31 +30,27 @@ RoomModel.prototype = {
       .done(this.onTemperatureChange.bind(this));
   },
 
-  // SETTERS
+  /* -------------------- Setters ----------------- */
+
   switchLight: function(isLightOn) {
-    // send to server
     serverApi
       .changeRoomProperty(this.name, 'light', isLightOn)
       .done(this.onLightChange.bind(this));
   },
 
   moveCurtains: function(isCurtainsOpened) {
-    // send to server
     serverApi
       .changeRoomProperty(this.name, 'curtains', isCurtainsOpened)
       .done(this.onCurtainsChange.bind(this));
   },
 
   changeTemperature: function(newTemp) {
-    // send to server
     serverApi
       .changeRoomProperty(this.name, 'temperature', newTemp)
       .done(this.onTemperatureChange.bind(this));
   },
 
-  /* 
-    Server Event Callbacks
-  */
+  /* -------------------- Server Event Callbacks ----------------- */
 
   onLightChange: function(isLightOn) {
     this.isLightOn = isLightOn;

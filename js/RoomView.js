@@ -10,60 +10,74 @@ var RoomView = function(model) {
 
 RoomView.prototype = {
   init: function() {
-    this.build()
+    this.bindContainer()
+      .build()
+      .bindChildren()
       .setupHandlers()
       .getContent();
   },
 
-  build: function() {
-    var room = this.model;
-    var lightId = room.name + '-light';
-    var curtainsId = room.name + '-curtains';
-    var temperatureId = room.name + '-temperature';
+  bindContainer: function() {
+    this.$container = $('#switchboard');
 
+    return this;
+  },
+
+  /**
+   * DOM insertions based on the model content
+   */
+  build: function() {
+    this.lightId = this.model.name + '-light';
+    this.curtainsId = this.model.name + '-curtains';
+    this.temperatureId = this.model.name + '-temperature';
+
+    // Room header element
     var html =
       `
         <li class="mdl-list__item">
             <div class="room-view ` +
-      room.name +
+      this.model.name +
       `-card mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 class="mdl-card__title-text">` +
-      room.name +
+      this.model.name +
       `</h2>
                 </div>
             <div class="mdl-card__supporting-text">
     `;
 
+    // Room light switch element
     html +=
       `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
-      lightId +
+      this.lightId +
       `">
         <input type="checkbox" id="` +
-      lightId +
+      this.lightId +
       `" class="mdl-switch__input">
         <span class="mdl-switch__label">Light</span>
       </label>`;
 
+    // Room curtains switch element
     html +=
       `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="` +
-      curtainsId +
+      this.curtainsId +
       `">
         <input type="checkbox" id="` +
-      curtainsId +
+      this.curtainsId +
       `" class="mdl-switch__input">
         <span class="mdl-switch__label">Curtains</span>
       </label>`;
 
+    // Room temerature input element
     html +=
       `
     <form action="#">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="` +
-      temperatureId +
+      this.temperatureId +
       `">
             <label class="mdl-textfield__label" for="` +
-      temperatureId +
+      this.temperatureId +
       `">Temperature...</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
@@ -73,12 +87,15 @@ RoomView.prototype = {
         </div>
     </div>`;
 
-    this.$container = $('#switchboard');
     this.$container.append(html);
 
-    this.$lightSwitch = this.$container.find('#' + lightId);
-    this.$curtainsSwitch = this.$container.find('#' + curtainsId);
-    this.$temperatureInput = this.$container.find('#' + temperatureId);
+    return this;
+  },
+
+  bindChildren: function() {
+    this.$lightSwitch = this.$container.find('#' + this.lightId);
+    this.$curtainsSwitch = this.$container.find('#' + this.curtainsId);
+    this.$temperatureInput = this.$container.find('#' + this.temperatureId);
 
     return this;
   },
@@ -88,10 +105,7 @@ RoomView.prototype = {
     this.$curtainsSwitch.change(this.moveCurtainsButton.bind(this));
     this.$temperatureInput.keyup(this.temperatureInput.bind(this));
 
-    /**
-     * Event Dispatcher
-     */
-
+    // Listen to model's events
     this.model.lightEvent.attach(this.onLightChange.bind(this));
     this.model.curtainsEvent.attach(this.onCurtainsChange.bind(this));
     this.model.temperatureEvent.attach(this.onTemperatureChange.bind(this));
@@ -100,6 +114,7 @@ RoomView.prototype = {
   },
 
   getContent: function() {
+    // Retrieve initial data
     this.model.getLightState();
     this.model.getCurtainsState();
     this.model.getTemperature();
@@ -122,7 +137,7 @@ RoomView.prototype = {
     }
   },
 
-  /* -------------------- Handlers From Event Dispatcher ----------------- */
+  /* -------------------- Event Dispatcher Listeners ----------------- */
 
   onLightChange: function() {
     this.$lightSwitch.prop('checked', this.model.isLightOn);

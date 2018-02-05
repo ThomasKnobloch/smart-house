@@ -10,14 +10,20 @@ var serverApi = {
   },
 
   setup: function() {
+    // Load the content of the static file in memory to replace a "server" side
     return serverApi.getHouseObject().done(function(data) {
       serverApi.data = data;
     });
   },
 
+  /**
+   * Get the content of a static file
+   */
   getHouseObject: function() {
     return $.get(serverApi.config.urlBase + 'house.json');
   },
+
+  /* -------------------- Fake server HTTP/GET requests ----------------- */
 
   getRoomList: function() {
     return $.Deferred().resolve(Object.keys(serverApi.data));
@@ -34,6 +40,8 @@ var serverApi = {
   getRoomTemperature: function(roomName) {
     return $.Deferred().resolve(serverApi.data[roomName]['temperature']);
   },
+
+  /* -------------------- Fake server HTTP/SET requests ----------------- */
 
   changeRoomProperty(roomName, roomProperty, value) {
     serverApi.data[roomName][roomProperty] = value;

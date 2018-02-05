@@ -24,9 +24,7 @@ PlanView.prototype = {
   },
 
   setupRoomHandlers: function(roomModel) {
-    /**
-     * Event Dispatcher
-     */
+    // Listen to models' events
     roomModel.lightEvent.attach(this.updateLight.bind(this, roomModel));
     roomModel.curtainsEvent.attach(this.updateCurtains.bind(this, roomModel));
     roomModel.temperatureEvent.attach(
@@ -37,19 +35,22 @@ PlanView.prototype = {
   },
 
   getContent: function(roomModel) {
+    // Retrieve initial data 
     roomModel.getLightState();
     roomModel.getCurtainsState();
     roomModel.getTemperature();
   },
 
-  /* -------------------- Handlers From Event Dispatcher ----------------- */
+  /* -------------------- Event Dispatcher Listeners ----------------- */
 
   updateLight: function(roomModel) {
+    // The room name is used to link the data (model) with the DOM element
     var $lightImage = this.$container.find('g#' + roomModel.name + ' .light');
     roomModel.isLightOn ? $lightImage.show() : $lightImage.hide();
   },
 
   updateCurtains: function(roomModel) {
+    // The room name is used to link the data (model) with the DOM element
     var $curtainsPath = this.$container.find(
       'g#' + roomModel.name + ' .curtains'
     );
@@ -61,6 +62,7 @@ PlanView.prototype = {
   },
 
   updateTemperature: function(roomModel) {
+    // The room name is used to link the data (model) with the DOM element
     var $temperatureText = this.$container.find(
       'g#' + roomModel.name + ' .temperature'
     );
