@@ -23,7 +23,7 @@ The server-side is replaced by a static file (mock-server/house.json) that is us
 
 It contains a JSON object organized as follows:
 
-```json
+```javascript
 {
     room-name1:{
         propertyA: stateA1,
