@@ -1,3 +1,8 @@
+/**
+ * Responsible for receiving user events (forwarded by the view)
+ * and updating the model.
+ */
+
 var RoomController = function(model, view) {
   this.model = model;
   this.view = view;

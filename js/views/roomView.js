@@ -1,3 +1,7 @@
+/**
+ * Responsible for the DOM manipulation of the room controllers 
+ */
+
 var RoomView = function(model) {
   this.model = model;
 
@@ -24,7 +28,7 @@ RoomView.prototype = {
   },
 
   /**
-   * DOM insertions based on the model content
+   * DOM insertions based on the model's content
    */
   build: function() {
     this.lightId = this.model.name + '-light';

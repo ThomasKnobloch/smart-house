@@ -1,3 +1,8 @@
+/**
+ * The state of each room is store in our models to centralize the data
+ * and make it observable by other components.
+ */
+
 var RoomModel = function(name) {
   this.name = name;
 

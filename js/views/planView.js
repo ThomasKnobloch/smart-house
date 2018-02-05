@@ -1,3 +1,7 @@
+/**
+ * Responsible for the DOM manipulation of the house floor plan
+ */
+
 var PlanView = function(roomList) {
   this.roomModelList = roomList;
   this.init();
@@ -35,7 +39,7 @@ PlanView.prototype = {
   },
 
   getContent: function(roomModel) {
-    // Retrieve initial data 
+    // Retrieve initial data
     roomModel.getLightState();
     roomModel.getCurtainsState();
     roomModel.getTemperature();

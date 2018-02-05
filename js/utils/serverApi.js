@@ -1,3 +1,7 @@
+/**
+ * Interface to the server (here to the static json file)
+ */
+
 var serverApi = {
   data: null,
 
@@ -23,7 +27,7 @@ var serverApi = {
     return $.get(serverApi.config.urlBase + 'house.json');
   },
 
-  /* -------------------- Fake server HTTP/GET requests ----------------- */
+  /* -------------------- Fake Server HTTP/GET Requests ----------------- */
 
   getRoomList: function() {
     return $.Deferred().resolve(Object.keys(serverApi.data));
@@ -41,7 +45,7 @@ var serverApi = {
     return $.Deferred().resolve(serverApi.data[roomName]['temperature']);
   },
 
-  /* -------------------- Fake server HTTP/SET requests ----------------- */
+  /* -------------------- Fake Server HTTP/SET Requests ----------------- */
 
   changeRoomProperty(roomName, roomProperty, value) {
     serverApi.data[roomName][roomProperty] = value;

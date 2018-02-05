@@ -1,4 +1,4 @@
-var House = {
+var App = {
   /**
    * Serialize the server object into RoomModel
    * @param {string[]} roomNameList An array of room names.
@@ -12,7 +12,7 @@ var House = {
 
   /**
    * Create the room views displayed on the left of the page
-   * @param {RoomModel[]} rooms An array of RoomModel.
+   * @param {RoomModel[]} rooms An array of RoomModel that describes the house.
    */
   setupSwitchboard: function(rooms) {
     rooms.forEach(roomModel => {
@@ -22,7 +22,7 @@ var House = {
   },
 
   /**
-   * Create the plan view that manipulate the floor plan SVG
+   * Create the plan view that manipulate the floor plan (SVG)
    * @param {RoomModel[]} rooms An array of RoomModels.
    */
   setupPlan: function(rooms) {
@@ -34,12 +34,12 @@ serverApi.init().done(function() {
   serverApi.getRoomList().done(function(roomNameList) {
     $(function() {
       // Create the views (DOM insertion) when the DOM is ready
-      var roomModels = House.createRooms(roomNameList);
-      House.setupSwitchboard(roomModels);
+      var roomModels = App.createRooms(roomNameList);
+      App.setupSwitchboard(roomModels);
 
       $('object').on('load', function() {
         // Bind and update the SVG element when it's loaded
-        House.setupPlan(roomModels);
+        App.setupPlan(roomModels);
       });
     });
   });
