@@ -55,6 +55,6 @@ I tested the application on Google Chrome, Mozilla Firefox and Safari for MacOS.
 
 A online demo is available [here](https://thomasknobloch.github.io/smart-house/).
 
-## Download sources
+## Download source code
 
 The source code can be downloaded from [here](https://github.com/ThomasKnobloch/smart-house/archive/master.zip).
