@@ -1,11 +1,11 @@
 var PlanView = function(roomList) {
-  this.roomListModel = roomList;
+  this.roomModelList = roomList;
   this.init();
 };
 
 PlanView.prototype = {
   init: function() {
-    this.bindChildren().setupHandlers();
+    this.bindChildren().setup();
   },
 
   bindChildren: function() {
@@ -14,22 +14,32 @@ PlanView.prototype = {
     return this;
   },
 
-  setupHandlers: function() {
-    this.roomListModel.forEach(room => {
-      //Init
-      this.updateLight(room);
-      this.updateCurtains(room);
-      this.updateTemperature(room);
-
-      /**
-       * Event Dispatcher
-       */
-      room.lightEvent.attach(this.updateLight.bind(this, room));
-      room.curtainsEvent.attach(this.updateCurtains.bind(this, room));
-      room.temperatureEvent.attach(this.updateTemperature.bind(this, room));
+  setup: function() {
+    this.roomModelList.forEach(room => {
+      this.setupRoomHandlers(room);
+      this.getContent(room);
     });
 
     return this;
+  },
+
+  setupRoomHandlers: function(roomModel) {
+    /**
+     * Event Dispatcher
+     */
+    roomModel.lightEvent.attach(this.updateLight.bind(this, roomModel));
+    roomModel.curtainsEvent.attach(this.updateCurtains.bind(this, roomModel));
+    roomModel.temperatureEvent.attach(
+      this.updateTemperature.bind(this, roomModel)
+    );
+
+    return this;
+  },
+
+  getContent: function(roomModel) {
+    roomModel.getLightState();
+    roomModel.getCurtainsState();
+    roomModel.getTemperature();
   },
 
   /* -------------------- Handlers From Event Dispatcher ----------------- */

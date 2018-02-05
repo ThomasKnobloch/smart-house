@@ -1,8 +1,8 @@
-var RoomModel = function(name, isLightOn, isCurtainsOpened, temperature) {
+var RoomModel = function(name) {
   this.name = name;
-  this.isLightOn = isLightOn;
-  this.isCurtainsOpened = isCurtainsOpened;
-  this.temperature = temperature;
+  this.isLightOn = false;
+  this.isCurtainsOpened = false;
+  this.temperature = 0;
 
   this.lightEvent = new Event(this);
   this.curtainsEvent = new Event(this);
@@ -10,6 +10,24 @@ var RoomModel = function(name, isLightOn, isCurtainsOpened, temperature) {
 };
 
 RoomModel.prototype = {
+  // GETTERS
+  getLightState: function() {
+    serverApi.getRoomLightState(this.name).done(this.onLightChange.bind(this));
+  },
+
+  getCurtainsState: function() {
+    serverApi
+      .getRoomCurtainsState(this.name)
+      .done(this.onCurtainsChange.bind(this));
+  },
+
+  getTemperature: function() {
+    serverApi
+      .getRoomTemperature(this.name)
+      .done(this.onTemperatureChange.bind(this));
+  },
+
+  // SETTERS
   switchLight: function(isLightOn) {
     // send to server
     serverApi

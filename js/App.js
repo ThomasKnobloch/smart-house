@@ -1,19 +1,8 @@
 var House = {
-  createRooms: function() {
-    var models = [];
-
-    for (const roomName in serverApi.data) {
-      models.push(
-        new RoomModel(
-          roomName,
-          serverApi.data[roomName].light,
-          serverApi.data[roomName].curtains,
-          serverApi.data[roomName].temperature
-        )
-      );
-    }
-
-    return models;
+  createRooms: function(roomNameList) {
+    return roomNameList.map(function(roomName) {
+      return new RoomModel(roomName);
+    });
   },
 
   setupSwitchboard: function(rooms) {
@@ -29,13 +18,15 @@ var House = {
 };
 
 serverApi.init().done(function() {
-  $(function() {
-    var roomModels = House.createRooms();
+  serverApi.getRoomList().done(function(roomNameList) {
+    $(function() {
+      var roomModels = House.createRooms(roomNameList);
 
-    House.setupSwitchboard(roomModels);
+      House.setupSwitchboard(roomModels);
 
-    $('object').on('load', function() {
-      House.setupPlan(roomModels);
+      $('object').on('load', function() {
+        House.setupPlan(roomModels);
+      });
     });
   });
 });

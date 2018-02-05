@@ -10,17 +10,32 @@ var serverApi = {
   },
 
   setup: function() {
-    return serverApi.getInitialObject().done(function(data) {
+    return serverApi.getHouseObject().done(function(data) {
       serverApi.data = data;
     });
   },
 
-  getInitialObject: function() {
+  getHouseObject: function() {
     return $.get(serverApi.config.urlBase + 'house.json');
   },
 
+  getRoomList: function() {
+    return $.Deferred().resolve(Object.keys(serverApi.data));
+  },
+
+  getRoomLightState: function(roomName) {
+    return $.Deferred().resolve(serverApi.data[roomName]['light']);
+  },
+
+  getRoomCurtainsState: function(roomName) {
+    return $.Deferred().resolve(serverApi.data[roomName]['curtains']);
+  },
+
+  getRoomTemperature: function(roomName) {
+    return $.Deferred().resolve(serverApi.data[roomName]['temperature']);
+  },
+
   changeRoomProperty(roomName, roomProperty, value) {
-    //Simulate async call
     serverApi.data[roomName][roomProperty] = value;
 
     return $.Deferred().resolve(value);

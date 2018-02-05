@@ -10,7 +10,9 @@ var RoomView = function(model) {
 
 RoomView.prototype = {
   init: function() {
-    this.build().setupHandlers();
+    this.build()
+      .setupHandlers()
+      .getContent();
   },
 
   build: function() {
@@ -78,11 +80,6 @@ RoomView.prototype = {
     this.$curtainsSwitch = this.$container.find('#' + curtainsId);
     this.$temperatureInput = this.$container.find('#' + temperatureId);
 
-    //Init
-    this.onLightChange();
-    this.onCurtainsChange();
-    this.onTemperatureChange();
-
     return this;
   },
 
@@ -100,6 +97,12 @@ RoomView.prototype = {
     this.model.temperatureEvent.attach(this.onTemperatureChange.bind(this));
 
     return this;
+  },
+
+  getContent: function() {
+    this.model.getLightState();
+    this.model.getCurtainsState();
+    this.model.getTemperature();
   },
 
   switchLightButton: function() {

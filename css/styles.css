@@ -1,4 +1,10 @@
-/* Votre Style */
+:root {
+  --bedroom1-color: #e91e63;
+  --bedroom2-color: #FF9800;
+  --livingroom-color: #8BC34A;
+  --bathroom-color: #03A9F4;
+  --kitchen-color: #00BCD4;
+}
 
 .room-view > .mdl-card__title {
   color: #fff;
@@ -6,19 +12,19 @@
 }
 
 .bedroom1-card > .mdl-card__title {
-  background: #E91E63;
-}
-.livingroom-card > .mdl-card__title {
-  background: #8BC34A;
+  background: var(--bedroom1-color);
 }
 .bedroom2-card > .mdl-card__title {
-  background: #FF9800;
+  background: var(--bedroom2-color);
+}
+.livingroom-card > .mdl-card__title {
+  background: var(--livingroom-color);
 }
 .bathroom-card > .mdl-card__title {
-  background: #03A9F4;
+  background: var(--bathroom-color);
 }
 .kitchen-card > .mdl-card__title {
-  background: #00BCD4;
+  background: var(--kitchen-color);
 }
 
 .page-content {
