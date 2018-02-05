@@ -1,4 +1,4 @@
-# automatic-house
+# smart-house
 
 ## Instructions
 
@@ -53,8 +53,8 @@ I tested the application on Google Chrome, Mozilla Firefox and Safari for MacOS.
 
 ## Demo
 
-A online demo is available [here](https://thomasknobloch.github.io/automatic-house/).
+A online demo is available [here](https://thomasknobloch.github.io/smart-house/).
 
 ## Download sources
 
-The source code can be downloaded from [here](https://github.com/ThomasKnobloch/automatic-house/archive/master.zip).
+The source code can be downloaded from [here](https://github.com/ThomasKnobloch/smart-house/archive/master.zip).
