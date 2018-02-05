@@ -17,6 +17,28 @@ I thought that a simple application like this should be as light and readable as
 
 The project implements the MVC model in order to be flexible and extensible.
 
+## Mock Server
+
+The server-side is replaced by a static file (mock-server/house.json) that is use on read-only for the initial state.
+
+It contains a JSON object organized as follows:
+
+```json
+{
+    room-name1:{
+        propertyA: stateA1,
+        propertyB: stateB1,
+        propertyC: stateC1
+    },
+    room-name2:{
+        propertyA: stateA2,
+        propertyB: stateB2,
+        propertyC: stateC2
+    },
+    ...
+}
+```
+
 ## Third-party libraries
 
 * jQuery: JavaScript library used to simplify the client-side scripting of HTML.
@@ -24,8 +46,8 @@ The project implements the MVC model in order to be flexible and extensible.
 
 ## Setup
 
-This application can be hosted on a simple HTTP server. There is no server-side code needed.
-The only external access made is to retrieve the MDL CSS lbrary and jQuery from the Google CDN.
+This application can be hosted on a plain HTTP server. There is no server-side code needed.
+The only external access required is to retrieve the MDL CSS library and jQuery from the Google CDN.
 
 I tested the application on Google Chrome, Mozilla Firefox and Safari for MacOS.
 
