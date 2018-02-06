@@ -24,7 +24,7 @@ RoomController.prototype = {
     return this;
   },
 
-  /* -------------------- Event Dispatcher Listeners ----------------- */
+  /* -------------------- View Event Dispatcher Listeners ----------------- */
 
   switchLight: function(sender, args) {
     this.model.switchLight(args);

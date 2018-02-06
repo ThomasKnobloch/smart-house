@@ -1,5 +1,5 @@
 /**
- * The state of each room is store in our models to centralize the data
+ * The state of each room is stored in our models to centralize the data
  * and make it observable by other components.
  */
 
@@ -11,6 +11,7 @@ var RoomModel = function(name) {
   this.isCurtainsOpened = false;
   this.temperature = 0;
 
+  // Model events
   this.lightEvent = new Event(this);
   this.curtainsEvent = new Event(this);
   this.temperatureEvent = new Event(this);

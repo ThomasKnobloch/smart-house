@@ -1,8 +1,6 @@
 var App = {
   /**
    * Serialize the server object into RoomModel
-   * @param {string[]} roomNameList An array of room names.
-   * @return {RoomModel[]} An array of instantiated RoomModels.
    */
   createRooms: function(roomNameList) {
     return roomNameList.map(function(roomName) {
@@ -12,7 +10,6 @@ var App = {
 
   /**
    * Create the room views displayed on the left of the page
-   * @param {RoomModel[]} rooms An array of RoomModel that describes the house.
    */
   setupSwitchboard: function(rooms) {
     rooms.forEach(roomModel => {
@@ -22,8 +19,7 @@ var App = {
   },
 
   /**
-   * Create the plan view that manipulate the floor plan (SVG)
-   * @param {RoomModel[]} rooms An array of RoomModels.
+   * Create the view that manipulate the floor plan (SVG)
    */
   setupPlan: function(rooms) {
     var planView = new PlanView(rooms);
@@ -33,7 +29,7 @@ var App = {
 serverApi.init().done(function() {
   serverApi.getRoomList().done(function(roomNameList) {
     $(function() {
-      // Create the views (DOM insertion) when the DOM is ready
+      // Create the views (DOM insertions) when the DOM is ready
       var roomModels = App.createRooms(roomNameList);
       App.setupSwitchboard(roomModels);
       App.setupPlan(roomModels);

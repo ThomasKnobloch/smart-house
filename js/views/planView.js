@@ -12,7 +12,7 @@ PlanView.prototype = {
     // Bind the SVG container
     this.bindChildren();
 
-    // Check if the SVG content is already loaded
+    // Check if the SVG content is already fully loaded
     if (this.$container.find('g').length !== 0) {
       // Update the SVG
       this.setup();
@@ -57,16 +57,16 @@ PlanView.prototype = {
     roomModel.getTemperature();
   },
 
-  /* -------------------- Event Dispatcher Listeners ----------------- */
+  /* -------------------- Model Event Dispatcher Listeners ----------------- */
 
   updateLight: function(roomModel) {
-    // The room name is used to link the data (model) with the DOM element
+    // The room name is used to link the data (model) with the SVG DOM element
     var $lightImage = this.$container.find('g#' + roomModel.name + ' .light');
     roomModel.isLightOn ? $lightImage.show() : $lightImage.hide();
   },
 
   updateCurtains: function(roomModel) {
-    // The room name is used to link the data (model) with the DOM element
+    // The room name is used to link the data (model) with the SVG DOM element
     var $curtainsPath = this.$container.find(
       'g#' + roomModel.name + ' .curtains'
     );
@@ -78,7 +78,7 @@ PlanView.prototype = {
   },
 
   updateTemperature: function(roomModel) {
-    // The room name is used to link the data (model) with the DOM element
+    // The room name is used to link the data (model) with the SVG DOM element
     var $temperatureText = this.$container.find(
       'g#' + roomModel.name + ' .temperature'
     );

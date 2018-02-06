@@ -47,39 +47,23 @@ RoomView.prototype = {
 
     // Room light switch element
     html += `
-    <label id="${
-      this.lightId
-    }-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
-      this.lightId
-    }">
+    <label id="${this.lightId}-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${this.lightId}">
         <input type="checkbox" id="${this.lightId}" class="mdl-switch__input">
         <span class="mdl-switch__label">Light</span>
       </label>`;
 
     // Room curtains switch element
-    html += `<label id="${
-      this.curtainsId
-    }-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
-      this.curtainsId
-    }">
-        <input type="checkbox" id="${
-          this.curtainsId
-        }" class="mdl-switch__input">
+    html += `<label id="${this.curtainsId}-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${this.curtainsId}">
+        <input type="checkbox" id="${this.curtainsId}" class="mdl-switch__input">
         <span class="mdl-switch__label">Curtains</span>
       </label>`;
 
     // Room temerature input element
     html += `
     <form action="#">
-        <div id="${
-          this.temperatureId
-        }-textfield"class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="${
-              this.temperatureId
-            }">
-            <label class="mdl-textfield__label" for="${
-              this.temperatureId
-            }">Temperature...</label>
+        <div id="${this.temperatureId}-textfield"class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="${this.temperatureId}">
+            <label class="mdl-textfield__label" for="${this.temperatureId}">Temperature...</label>
             <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
     </form>`;
@@ -97,10 +81,12 @@ RoomView.prototype = {
   },
 
   bindChildren: function() {
+    // DOM elements used to listen user events
     this.$lightInput = this.$container.find('#' + this.lightId);
     this.$curtainsInput = this.$container.find('#' + this.curtainsId);
     this.$temperatureInput = this.$container.find('#' + this.temperatureId);
-
+    
+    // DOM elements used to update the view (with MDL)
     this.$lightSwitch = this.$container.find('#' + this.lightId + '-switch');
     this.$curtainsSwitch = this.$container.find(
       '#' + this.curtainsId + '-switch'
@@ -132,6 +118,8 @@ RoomView.prototype = {
     this.model.getTemperature();
   },
 
+  /* -------------------- User Event Listeners ----------------- */
+
   switchLightButton: function() {
     var val = this.$lightInput.prop('checked');
     this.lightEvent.notify(val);
@@ -149,7 +137,7 @@ RoomView.prototype = {
     }
   },
 
-  /* -------------------- Event Dispatcher Listeners ----------------- */
+  /* -------------------- Model Event Dispatcher Listeners ----------------- */
 
   onLightChange: function() {
     if (this.model.isLightOn) {

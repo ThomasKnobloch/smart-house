@@ -1,5 +1,5 @@
 /**
- * Interface to the server (here to the static json file)
+ * Gateway designed to handle requests to the server (here to the static json file)
  */
 
 var serverApi = {

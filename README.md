@@ -4,9 +4,9 @@
 
 A JavaScript application simulating house automation: pressing a button on a control panel would visually turn on a light, change the temperature or close the curtains. Some constraints:
 
-* the application must use jQuery
+* the application must use jQuery.
 * the components must have HTTP based "server" interaction (use a static file for simplicity, data persistence is not required). For example, the heating component retrieves the current temperature from the server and also sends the desired one back to the server.
-* the solution has to be extensible and documented, so that we can develop our own components that react to events
+* the solution has to be extensible and documented, so that we can develop our own components that react to events.
 
 The application will be executed on a plain HTTP server with no possibility to run code server side and is being viewed in 2 major browsers of your choice.
 
@@ -15,7 +15,7 @@ The application will be executed on a plain HTTP server with no possibility to r
 This project has been done without any rich JavaScript framework.
 I thought that a simple application like this should be as light and readable as possible.
 
-The project implements the MVC model in order to be flexible and extensible.
+The project implements the MVC pattern in order to be flexible and extensible.
 
 ## Floor Plan SVG
 
@@ -26,7 +26,7 @@ For example, each <g> tag represents a room (identified by the room name) which 
 
 ## Mock Server
 
-The server-side is replaced by a static file (mock-server/house.json) that is use on read-only for the initial state.
+The server-side is replaced by a static file (mock-server/house.json) that is used on read-only for the initial state of the application.
 
 It contains a JSON object organized as follows:
 
@@ -51,10 +51,11 @@ It contains a JSON object organized as follows:
 * jQuery: JavaScript library used to simplify the client-side scripting of HTML.
 * Material Design Lite (MDL): Icons and CSS templates that helps to build fast, modern mobile-ready web apps.
 
+Both libraries are retrieved from external CDNs.
+
 ## Setup
 
 This application can be hosted on a plain HTTP server. There is no server-side code needed.
-The only external access required is to retrieve the MDL CSS library and jQuery from the Google CDN.
 
 I tested the application on Google Chrome, Mozilla Firefox and Safari for MacOS.
 
