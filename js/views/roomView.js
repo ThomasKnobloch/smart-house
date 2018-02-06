@@ -1,5 +1,5 @@
 /**
- * Responsible for the DOM manipulation of the room controllers 
+ * Responsible for the DOM manipulation of the room controllers
  */
 
 var RoomView = function(model) {
@@ -47,7 +47,9 @@ RoomView.prototype = {
 
     // Room light switch element
     html += `
-    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
+    <label id="${
+      this.lightId
+    }-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
       this.lightId
     }">
         <input type="checkbox" id="${this.lightId}" class="mdl-switch__input">
@@ -55,7 +57,9 @@ RoomView.prototype = {
       </label>`;
 
     // Room curtains switch element
-    html += `<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
+    html += `<label id="${
+      this.curtainsId
+    }-switch" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="${
       this.curtainsId
     }">
         <input type="checkbox" id="${
@@ -67,7 +71,9 @@ RoomView.prototype = {
     // Room temerature input element
     html += `
     <form action="#">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <div id="${
+          this.temperatureId
+        }-textfield"class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="${
               this.temperatureId
             }">
@@ -84,20 +90,31 @@ RoomView.prototype = {
 
     this.$container.append(html);
 
+    // Register new elements for the MDL Library
+    componentHandler.upgradeDom();
+
     return this;
   },
 
   bindChildren: function() {
-    this.$lightSwitch = this.$container.find('#' + this.lightId);
-    this.$curtainsSwitch = this.$container.find('#' + this.curtainsId);
+    this.$lightInput = this.$container.find('#' + this.lightId);
+    this.$curtainsInput = this.$container.find('#' + this.curtainsId);
     this.$temperatureInput = this.$container.find('#' + this.temperatureId);
+
+    this.$lightSwitch = this.$container.find('#' + this.lightId + '-switch');
+    this.$curtainsSwitch = this.$container.find(
+      '#' + this.curtainsId + '-switch'
+    );
+    this.$temperatureTextField = this.$container.find(
+      '#' + this.temperatureId + '-textfield'
+    );
 
     return this;
   },
 
   setupHandlers: function() {
-    this.$lightSwitch.change(this.switchLightButton.bind(this));
-    this.$curtainsSwitch.change(this.moveCurtainsButton.bind(this));
+    this.$lightInput.change(this.switchLightButton.bind(this));
+    this.$curtainsInput.change(this.moveCurtainsButton.bind(this));
     this.$temperatureInput.keyup(this.temperatureInput.bind(this));
 
     // Listen to model's events
@@ -116,12 +133,12 @@ RoomView.prototype = {
   },
 
   switchLightButton: function() {
-    var val = this.$lightSwitch.prop('checked');
+    var val = this.$lightInput.prop('checked');
     this.lightEvent.notify(val);
   },
 
   moveCurtainsButton: function() {
-    var val = this.$curtainsSwitch.prop('checked');
+    var val = this.$curtainsInput.prop('checked');
     this.curtainsEvent.notify(val);
   },
 
@@ -135,14 +152,24 @@ RoomView.prototype = {
   /* -------------------- Event Dispatcher Listeners ----------------- */
 
   onLightChange: function() {
-    this.$lightSwitch.prop('checked', this.model.isLightOn);
+    if (this.model.isLightOn) {
+      this.$lightSwitch.get(0).MaterialSwitch.on();
+    } else {
+      this.$lightSwitch.get(0).MaterialSwitch.off();
+    }
   },
 
   onCurtainsChange: function() {
-    this.$curtainsSwitch.prop('checked', this.model.isCurtainsOpened);
+    if (this.model.isCurtainsOpened) {
+      this.$curtainsSwitch.get(0).MaterialSwitch.on();
+    } else {
+      this.$curtainsSwitch.get(0).MaterialSwitch.off();
+    }
   },
 
   onTemperatureChange: function() {
-    this.$temperatureInput.val(this.model.temperature);
+    this.$temperatureTextField
+      .get(0)
+      .MaterialTextfield.change(this.model.temperature);
   }
 };
