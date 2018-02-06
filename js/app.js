@@ -36,11 +36,7 @@ serverApi.init().done(function() {
       // Create the views (DOM insertion) when the DOM is ready
       var roomModels = App.createRooms(roomNameList);
       App.setupSwitchboard(roomModels);
-
-      $('object').on('load', function() {
-        // Bind and update the SVG element when it's loaded
-        App.setupPlan(roomModels);
-      });
+      App.setupPlan(roomModels);
     });
   });
 });

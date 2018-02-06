@@ -9,7 +9,19 @@ var PlanView = function(roomList) {
 
 PlanView.prototype = {
   init: function() {
-    this.bindChildren().setup();
+    // Bind the SVG container
+    this.bindChildren();
+
+    // Check if the SVG content is already loaded
+    if (this.$container.find('g').length !== 0) {
+      // Update the SVG
+      this.setup();
+    } else {
+      $('object').on('load', () => {
+        // Rebind and update the SVG element when it's loaded
+        this.bindChildren().setup();
+      });
+    }
   },
 
   bindChildren: function() {

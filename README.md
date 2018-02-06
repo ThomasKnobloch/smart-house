@@ -17,6 +17,13 @@ I thought that a simple application like this should be as light and readable as
 
 The project implements the MVC model in order to be flexible and extensible.
 
+## Floor Plan SVG
+
+A picture of a house floor plan is being used to show the different states of the rooms.
+
+I chose the SVG format in order to be able to show and hide every part of the house plan.
+For example, each <g> tag represents a room (identified by the room name) which gather all the room objects (light, curtains and temperature display).
+
 ## Mock Server
 
 The server-side is replaced by a static file (mock-server/house.json) that is use on read-only for the initial state.
